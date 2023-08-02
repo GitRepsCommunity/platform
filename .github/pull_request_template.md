@@ -1,11 +1,10 @@
 # Pull Request Format
 
-## Title
+## Branch Naming
 > {last name}-{repository}-{issue #}
 
-Example:
-
-> jumanca-platform-7
+## Pull Request Title
+Include a short, descriptive title regarding the issue the request intends to resolve.
 
 ## Summary
 > Briefly describe the changes in this pull request.
