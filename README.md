@@ -13,6 +13,7 @@ To run this Rails project as intended you will need to install:
 - Ruby
 - Ruby on Rails
 - A Ruby version manager (optional but recommended)
+
    - [RVM](https://rvm.io/)
    - [chruby](https://github.com/postmodern/chruby)
    - [rbenv](https://github.com/rbenv/rbenv)
@@ -21,10 +22,12 @@ To run this Rails project as intended you will need to install:
 ## 3: HomeBrew installation:
 
 ### Install Ruby:
+
 Reference the .ruby-version file for recommended Ruby verison. Use flag -v followed by the version number.
 ```
 brew install ruby
 ```
+
 
 ### Installing Rails:
 Reference the Gemfile for recommended Rails verison. Use flag -v followed by the version number.
