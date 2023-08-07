@@ -1,4 +1,4 @@
-# GitReps Community
+# GitReps Community Platform
 
 ## Installation and Usage Instructions
 
@@ -13,59 +13,26 @@ To run this Rails project as intended you will need to install:
 - Ruby
 - Ruby on Rails
 - A Ruby version manager (optional but recommended)
-   - RVM
-   - chruby
-   - rbenv
-   - asdf
+
+   - [RVM](https://rvm.io/)
+   - [chruby](https://github.com/postmodern/chruby)
+   - [rbenv](https://github.com/rbenv/rbenv)
+   - [asdf](https://asdf-vm.com/)
 
 ## 3: HomeBrew installation:
 
 ### Install Ruby:
+
+Reference the .ruby-version file for recommended Ruby verison. Use flag -v followed by the version number.
 ```
 brew install ruby
 ```
 
-### Verifying Ruby version:
-Most Ruby projects will contain a .ruby-version file with the expected version of Ruby to run.
-You can change your version of Ruby using a version manager like RVM.
-
-### Installing a version manager for Ruby (RVM):
-As a first step install GPG keys used to verify installation package:
-```
-brew install gnupg 
-
-gpg --keyserver keyserver.ubuntu.com --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB
-```
-
-Install RVM (development version):
-```
-\curl -sSL https://get.rvm.io | bash
-```
-
-View available versions of Ruby:
-```
-rvm list
-```
-
-Install specific version of Ruby (3.1.4 for this project as of 7/28/2023):
-```
-rvm install 3.1.4
-```
-#### NOTE: 
-If you are having installation/compilation issues with rvm install run:
-```
-rvm install 3.1.4 --with-openssl-dir={path to openssl@1.1}
-```
-
-You can find your openssl path on Linux/Unix systems by running:
-```
-which openssl
-```
 
 ### Installing Rails:
-Recommended version: ```7.0.6```
+Reference the Gemfile for recommended Rails verison. Use flag -v followed by the version number.
 ```
-gem install rails -v 7.0.6
+gem install rails
 ```
 
 ## 4: Running the Server:
