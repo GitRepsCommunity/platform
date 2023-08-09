@@ -54,6 +54,23 @@ brew install postgresql
 You may need to run ```brew tap homebrew/core``` if brew does not recognize postgresql as a current library.
 
 
+## Using Docker
+
+To start services run:
+```
+docker compose up --build
+```
+
+If the database doesn't exist yet run:
+```
+docker compose run web rake db:create
+```
+
+Any commands to be executed in the web service (rails app)
+can be done with the following:
+```
+docker compose run web <cmd>
+```
 
 ---------------------------------------------------------------------------
 
