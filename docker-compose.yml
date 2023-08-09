@@ -6,7 +6,7 @@ services:
     image: postgres:14.1-alpine
     restart: always
     environment:
-      - POSTGRES_PASSWORD=password
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
     volumes:
       - ./tmp/db:/var/lib/postgresql/data
   web:

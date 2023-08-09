@@ -58,12 +58,12 @@ You may need to run ```brew tap homebrew/core``` if brew does not recognize post
 
 To start services run:
 ```
-docker compose up --build
+docker compose up
 ```
 
-If the database doesn't exist yet run:
+If new dependencies have been added (Gemfile updated) include the `--build` flag.
 ```
-docker compose run web rake db:create
+docker compose up --build
 ```
 
 Any commands to be executed in the web service (rails app)
@@ -72,23 +72,16 @@ can be done with the following:
 docker compose run web <cmd>
 ```
 
----------------------------------------------------------------------------
+If the database doesn't exist yet run:
+```
+docker compose run web rake db:create
+```
 
-This README still needs to document whatever steps are necessary to get the
-application up and running.
 
-Things left to cover:
+## Environment Variables
+This project uses dotenv for storing local environment variables.
+Create a new `.env` file at the root of the project and add the following variables:
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+```
+POSTGRES_PASSWORD=password
+```
