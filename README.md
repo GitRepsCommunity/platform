@@ -54,24 +54,34 @@ brew install postgresql
 You may need to run ```brew tap homebrew/core``` if brew does not recognize postgresql as a current library.
 
 
+## Using Docker
 
----------------------------------------------------------------------------
+To start services run:
+```
+docker compose up
+```
 
-This README still needs to document whatever steps are necessary to get the
-application up and running.
+If new dependencies have been added (Gemfile updated) include the `--build` flag.
+```
+docker compose up --build
+```
 
-Things left to cover:
+Any commands to be executed in the web service (rails app)
+can be done with the following:
+```
+docker compose run web <cmd>
+```
 
-* Configuration
+If the database doesn't exist yet run:
+```
+docker compose run web rake db:create
+```
 
-* Database creation
 
-* Database initialization
+## Environment Variables
+This project uses dotenv for storing local environment variables.
+Create a new `.env` file at the root of the project and add the following variables:
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+```
+POSTGRES_PASSWORD=password
+```
