@@ -90,3 +90,17 @@ Create a new `.env` file at the root of the project and add the following variab
 ```
 POSTGRES_PASSWORD=password
 ```
+
+## Linting and Formatting
+This project uses [Rubocop](https://rubocop.org/) for linting and formatting.
+See `.rubocop.yml` for configuration.
+
+To run the linter:
+```
+docker compose run web rubocop
+```
+
+To autocorrect formatting:
+```
+docker compose run web rubocop -x
+```
