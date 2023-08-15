@@ -1,0 +1,8 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+echo "--------------------------------------"
+echo "pre-commit autoformatting with rubocop\n"
+
+# Must use the -T flag when running docker compose here.
+docker compose run -T web rubocop -x
