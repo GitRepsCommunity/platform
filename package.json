@@ -1,0 +1,19 @@
+{
+  "name": "platform",
+  "packageManager": "yarn@3.6.1",
+  "devDependencies": {
+    "husky": "^8.0.3",
+    "pinst": "^3.0.0"
+  },
+  "scripts": {
+    "start": "docker compose up",
+
+    "rails": "docker compose run web rails",
+    "format": "docker compose run web rubocop -x",
+    "lint": "docker compose run web rubocop",
+
+    "postinstall": "husky install",
+    "prepack": "pinst --disable",
+    "postpack": "pinst --enable"
+  }
+}
