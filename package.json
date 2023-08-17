@@ -6,6 +6,7 @@
     "pinst": "^3.0.0"
   },
   "scripts": {
+    "build": "docker compose build",
     "start": "docker compose up",
 
     "rails": "docker compose run web rails",
