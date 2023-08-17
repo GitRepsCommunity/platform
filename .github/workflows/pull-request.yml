@@ -5,10 +5,10 @@ on:
     branches:
       - main
 
-jobs:
-  env:
-    POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
+env:
+  POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
 
+jobs:
   lint:
     runs-on: ubuntu-latest
     steps:
