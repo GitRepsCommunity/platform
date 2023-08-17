@@ -2,7 +2,19 @@
 . "$(dirname -- "$0")/_/husky.sh"
 
 echo "--------------------------------------"
-echo "pre-commit autoformatting with rubocop\n"
+echo "pre-commit linting with rubocop\n"
+
+COLOR='\033[0;33m'
+RESET='\033[0m'
+ERR_MSG="${COLOR}
+--------------------------------------
+To autocorrect issues run:
+
+yarn run lint -A
+--------------------------------------
+${RESET}"
+
+trap "echo '$ERR_MSG'" ERR
 
 # Must use the -T flag when running docker compose here.
-docker compose run -T web rubocop -x
+docker compose run -T web rubocop
