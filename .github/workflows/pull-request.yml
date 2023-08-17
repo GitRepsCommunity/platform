@@ -6,6 +6,9 @@ on:
       - main
 
 jobs:
+  env:
+    POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
+
   lint:
     runs-on: ubuntu-latest
     steps:
