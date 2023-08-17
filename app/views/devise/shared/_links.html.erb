@@ -4,8 +4,8 @@
 <% end %>
 
 <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
-  <span class="mr-2">Not a member yet?</span>
-  <%= link_to "Sign up", new_registration_path(resource_name), class: "text-blue-600" %><br />
+  <span class="mr-2">Not a member?</span>
+  <%= link_to "Sign up", new_registration_path(resource_name) %><br />
 <% end %>
 
 <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
