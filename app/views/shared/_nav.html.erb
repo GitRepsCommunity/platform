@@ -1,0 +1,15 @@
+<nav class='h-16 w-full flex items-center justify-around'>
+    <div class='w-24 px-4'>
+        <%= link_to "Home", "/" %>
+    </div>
+    <div class='flex justify-center w-96 text-2xl'>
+        GitReps
+    </div>
+    <div class='w-24 px-4'>
+        <%- if controller_name != 'sessions' %>
+            <%= link_to "Log in", new_session_path(resource_name) %>
+        <%- elsif devise_mapping.registerable? && controller_name != 'registrations' %>
+            <%= link_to "Sign up", new_registration_path(resource_name) %><br />
+        <% end %>
+    </div>
+</nav>
