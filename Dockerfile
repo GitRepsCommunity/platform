@@ -13,6 +13,9 @@ RUN bundle install
 # Copy the rest of the application code into the container
 COPY . .
 
+
+ENTRYPOINT ["./docker-entrypoint.sh"]
+
 # Expose port 3000 to the host
 EXPOSE 3000
 
