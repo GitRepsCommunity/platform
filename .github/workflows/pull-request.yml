@@ -33,7 +33,7 @@ jobs:
       - name: Create Test DB
         run: yarn run rails db:create
 
-      - name: UnitTests
+      - name: Tests
         run: yarn run rails test
 
   system-tests:
@@ -42,5 +42,11 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
+      - name: Build
+        run: yarn run ci:test:build
+
+      - name: Create Test DB
+        run: yarn run ci:test:db
+
       - name: Tests
-        run: yarn run test:system
+        run: yarn run ci:test:system
