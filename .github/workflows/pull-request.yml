@@ -21,7 +21,7 @@ jobs:
       - name: Linting
         run: yarn run lint
 
-  test:
+  unit-tests:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -33,5 +33,14 @@ jobs:
       - name: Create Test DB
         run: yarn run rails db:create
 
-      - name: Tests
+      - name: UnitTests
         run: yarn run rails test
+
+  system-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Tests
+        run: yarn run test:system
