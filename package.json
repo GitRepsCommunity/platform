@@ -10,8 +10,13 @@
     "start": "docker compose up",
 
     "rails": "docker compose run web rails",
-    "format": "docker compose run web rubocop -x",
-    "lint": "docker compose run web rubocop",
+    "format": "docker compose run --no-deps web rubocop -x",
+    "lint": "docker compose run --no-deps web rubocop",
+    "test:system": "docker compose -f docker-compose-test.yml run --build web_test rails test:system",
+
+    "ci:test:build": "docker compose -f docker-compose-test.yml build",
+    "ci:test:db": "docker compose -f docker-compose-test.yml run web_test rails db:create",
+    "ci:test:system": "docker compose -f docker-compose-test.yml run web_test rails test:system",
 
     "postinstall": "husky install",
     "prepack": "pinst --disable",

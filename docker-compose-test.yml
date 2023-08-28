@@ -1,0 +1,27 @@
+version: '3'
+services:
+  db:
+    image: postgres:14.1-alpine
+    restart: always
+    environment:
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+    volumes:
+      - ./tmp/db:/var/lib/postgresql/data
+
+  chrome:
+    image: seleniarm/standalone-chromium:latest
+    shm_size: 2gb
+
+  web_test:
+    build: .
+    command: bundle exec rails s -p 3001 -b '0.0.0.0'
+    volumes:
+      - .:/app
+    ports:
+      - "3001:3001"
+    environment:
+      - RAIL_ENV=test
+    depends_on:
+      - db
+      - chrome
+    tty: true
