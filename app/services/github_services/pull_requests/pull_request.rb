@@ -5,38 +5,52 @@ module GithubServices
     class PullRequest
       include HttpHelper
 
-      attr_reader :id, :number, :state, :title, :author, :description, :created_at, :closed_at, :merged_at,
-                  :requested_reviewers, :issue_url, :diff_url
+      attr_reader :id, :number, :state, :title, :requested_reviewers, :issue_url, :diff_url
 
       def initialize(attrs)
-        @id = attrs.fetch(:id)
-        @number = attrs.fetch(:number)
-        @state = attrs.fetch(:state)
-        @draft = attrs.fetch(:draft)
-        @title = attrs.fetch(:title)
-        @author = attrs.dig(:user, :login)
-        @description = attrs.fetch(:body)
-        @labels = attrs.fetch(:labels)
-        @created_at = attrs.fetch(:created_at).try(:to_datetime)
-        @closed_at = attrs.fetch(:closed_at).try(:to_datetime)
-        @merged_at = attrs.fetch(:merged_at).try(:to_datetime)
-        @requested_reviewers = attrs.fetch(:requested_reviewers)
-        @issue_url = attrs.fetch(:issue_url)
-        @diff_url = attrs.fetch(:diff_url)
+        @attrs = attrs
+        @id = @attrs.fetch(:id)
+        @number = @attrs.fetch(:number)
+        @state = @attrs.fetch(:state)
+        @title = @attrs.fetch(:title)
+        @labels = @attrs.fetch(:labels)
+        @requested_reviewers = @attrs.fetch(:requested_reviewers)
+        @issue_url = @attrs.fetch(:issue_url)
+        @diff_url = @attrs.fetch(:diff_url)
       end
 
       def draft?
-        @draft
+        @attrs.fetch(:draft)
+      end
+
+      def author
+        @attrs.dig(:user, :login)
+      end
+
+      def description
+        @attrs.fetch(:body)
+      end
+
+      def created_at
+        @attrs.fetch(:created_at).try(:to_datetime)
+      end
+
+      def closed_at
+        @attrs.fetch(:closed_at).try(:to_datetime)
+      end
+
+      def merged_at
+        @attrs.fetch(:merged_at).try(:to_datetime)
       end
 
       def cycle_time
-        return unless @merged_at && @created_at
+        return unless merged_at && created_at
 
-        @cycle_time = @merged_at - @created_at
+        merged_at - created_at
       end
 
       def labels
-        @labels.map { |_lable| { name: label.name, description: label.description } }
+        @labels.map { |label| { name: label.name, description: label.description } }
       end
 
       def changed_files
