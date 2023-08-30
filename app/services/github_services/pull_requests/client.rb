@@ -20,7 +20,7 @@ module GithubServices
 
       def list
         pull_requests = github_list_pull_requests state: 'all'
-        pull_requests.each do |pull_request|
+        pull_requests.map do |pull_request|
           PullRequest.new pull_request
         end
       end

@@ -1,0 +1,12 @@
+<div>
+  <h1 class="font-bold text-4xl">PullRequests</h1>
+
+  <ul>
+  <% @pull_requests.each do |pr| %>
+    <li>
+      <h2><%= pr.title %></h2>
+      <%= pr.changed_files %>
+    </li>
+  <% end %>
+  </ul>
+</div>

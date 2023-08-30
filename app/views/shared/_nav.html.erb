@@ -7,7 +7,7 @@
     </div>
     <div class='w-24 px-4'>
         <%- if controller_name != 'sessions' %>
-            <%= link_to "Log in", new_session_path(resource_name) %>
+            <%= link_to "Log in", new_user_session_path %>
         <%- elsif devise_mapping.registerable? && controller_name != 'registrations' %>
             <%= link_to "Sign up", new_registration_path(resource_name) %><br />
         <% end %>

@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  get 'pull_requests/index'
+  get 'pull_requests/show'
   devise_for :users, controllers: {
     registrations: 'users/registrations'
   }
