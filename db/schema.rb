@@ -10,7 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema[7.0].define(version: 2023_09_05_012156) do
+=======
+ActiveRecord::Schema[7.0].define(version: 2023_08_30_223345) do
+>>>>>>> 3a5fb34 (Added configuration in controllers and models for Github omniauth. Requires further work and review.)
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
