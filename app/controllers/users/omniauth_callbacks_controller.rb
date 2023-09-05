@@ -28,12 +28,15 @@ module Users
 =======
 class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   layout 'authentication', only: %i[new create]
-  # You should configure your model like this:
-  # devise :omniauthable, omniauth_providers: [:twitter]
 
   # You should also create an action method in this controller like this:
-  # def twitter
-  # end
+  def github
+    # see app/models/user.rb:
+    # @user = User.from_omniauth(request.env["omniauth.auth"])
+    puts('GITHUB ACTION')
+    puts(request.env["omniauth.auth"])
+    redirect_to edit_user_registration_url
+  end
 
   # More info at:
   # https://github.com/heartcombo/devise#omniauth
