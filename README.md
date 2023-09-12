@@ -4,6 +4,8 @@
 
 [![Rails Style Guide](https://img.shields.io/badge/code_style-community-brightgreen.svg)](https://rails.rubystyle.guide)
 
+[![CodeFactor](https://www.codefactor.io/repository/github/gitrepscommunity/platform/badge)](https://www.codefactor.io/repository/github/gitrepscommunity/platform)
+
 
 ## Installation and Usage Instructions
 
