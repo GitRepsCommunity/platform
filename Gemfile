@@ -82,8 +82,4 @@ gem 'tailwindcss-rails', '~> 2.0'
 
 gem 'omniauth-github', '~> 2.0.0'
 
-<<<<<<< HEAD
 gem 'omniauth-rails_csrf_protection'
-=======
-gem "omniauth-rails_csrf_protection"
->>>>>>> 3a5fb34 (Added configuration in controllers and models for Github omniauth. Requires further work and review.)
