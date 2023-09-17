@@ -79,3 +79,5 @@ gem 'devise', '~> 4.9'
 gem 'github_api'
 
 gem 'tailwindcss-rails', '~> 2.0'
+
+gem 'simplecov', require: false, group: :test
