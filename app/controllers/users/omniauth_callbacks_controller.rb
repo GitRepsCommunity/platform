@@ -14,10 +14,6 @@ module Users
         session['devise.github_data'] = request.env['omniauth.auth'].except!(:extra)
         redirect_to new_user_registration_url
       end
-
-      # # puts('GITHUB ACTION')
-      # # puts(request.env['omniauth.auth'])
-      # redirect_to edit_user_registration_url
     end
 
     # More info at:
