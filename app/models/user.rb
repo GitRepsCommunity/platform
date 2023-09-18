@@ -9,7 +9,7 @@ class User < ApplicationRecord
          :rememberable,
          :validatable,
          :omniauthable, omniauth_providers: %i[github]
-  
+
   def self.from_omniauth(auth)
     find_or_create_by(provider: auth['provider'], uid: auth['uid']) do |user|
       primary_email_data = auth['extra']['all_emails'].find { |email_hash| email_hash['primary'] == true }
