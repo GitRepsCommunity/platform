@@ -1,7 +1,10 @@
 <%- if controller_name != 'sessions' %>
-  <span class="mr-2">Already a member?</span>
-  <%= link_to "Log in", new_session_path(resource_name), class: "text-blue-600" %><br />
+  <div class="text-center mt-0">
+    <span class="text-center mr-2">Already a member?</span>
+    <%= link_to "Log in", new_session_path(resource_name), class: "text-blue-600" %>
+  </div>
 <% end %>
+
 
 <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
   <span class="mr-2">Not a member yet?</span>
@@ -16,8 +19,4 @@
   <%= link_to "Didn't receive unlock instructions?", new_unlock_path(resource_name) %><br />
 <% end %>
 
-<%- if devise_mapping.omniauthable? && controller_name != 'sessions' %>
-  <%- resource_class.omniauth_providers.each do |provider| %>
-    <%= button_to "Sign in with #{OmniAuth::Utils.camelize(provider)}", omniauth_authorize_path(resource_name, provider), data: { turbo: false } %><br />
-  <% end %>
-<% end %>
+
