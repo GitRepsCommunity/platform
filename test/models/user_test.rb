@@ -6,7 +6,7 @@ class UserTest < ActiveSupport::TestCase
   # rubocop:disable Metrics/BlockLength
 
   test 'from_omniauth' do
-    auth_response = {
+    raw_auth_response = {
       'provider' => 'github',
       'uid' => '59379906',
       'info' => {
@@ -33,17 +33,31 @@ class UserTest < ActiveSupport::TestCase
       }
     }
 
-    user = User.from_omniauth(auth_response)
+    auth = OmniauthResponse.new(response: raw_auth_response)
+    user = User.from_omniauth(auth)
 
     assert user.valid?
-    assert_equal auth_response['provider'], user.provider
-    assert_equal auth_response['uid'], user.uid
-    assert_equal auth_response['info']['nickname'], user.github_username
+
+    assert_equal raw_auth_response['provider'], auth.provider
+    assert_equal auth.provider, user.provider
+
+    assert_equal raw_auth_response['uid'], auth.uid
+    assert_equal auth.uid, user.uid
+
+    assert_equal raw_auth_response['info']['nickname'], auth.github_username
+    assert_equal auth.github_username, user.github_username
+
     assert_not_nil user.password
     assert_equal 20, user.password.length
-    assert_equal auth_response['info']['email'], user.email
-    assert_equal auth_response['info']['image'], user.profile_pic_url
-    assert_equal auth_response['credentials']['token'], user.github_token
+
+    assert_equal raw_auth_response['info']['email'], auth.email
+    assert_equal auth.email, user.email
+
+    assert_equal raw_auth_response['info']['image'], auth.profile_pic_url
+    assert_equal auth.profile_pic_url, user.profile_pic_url
+
+    assert_equal raw_auth_response['credentials']['token'], auth.github_token
+    assert_equal auth.github_token, user.github_token
   end
 end
 # rubocop:enable Metrics/BlockLength
