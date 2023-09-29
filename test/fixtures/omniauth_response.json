@@ -18,10 +18,7 @@
       },
       "all_emails": [
         {
-          "email": "12345678+exampleuser@users.noreply.github.com"
-        },
-        {
-          "email": "example@user.com"
+          "email": "12345678+exampleuser@example.com"
         },
         {
           "email": "user@example.com"
