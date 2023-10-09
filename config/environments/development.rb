@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+# rubocop:disable Metrics/BlockLength
+
 require 'active_support/core_ext/integer/time'
 
 Rails.application.configure do
@@ -72,4 +74,10 @@ Rails.application.configure do
 
   # Uncomment if you wish to allow Action Cable access from any origin.
   # config.action_cable.disable_request_forgery_protection = true
+
+  # Encryption for GitHub user auth token column
+  config.active_record.encryption.primary_key = 'dev_primary_key'
+  config.active_record.encryption.deterministic_key = 'dev_deterministic_key'
+  config.active_record.encryption.key_derivation_salt = 'dev_key_derivation_salt'
 end
+# rubocop:enable Metrics/BlockLength

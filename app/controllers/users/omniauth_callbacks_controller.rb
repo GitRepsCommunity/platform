@@ -5,7 +5,7 @@ module Users
     skip_before_action :verify_authenticity_token, only: :github
 
     def github
-      @user = User.from_omniauth(request.env['omniauth.auth'])
+      @user = find_or_create_user_from_omniauth
 
       if @user.persisted?
         sign_in_and_redirect @user, event: :authentication
@@ -14,6 +14,13 @@ module Users
         session['devise.github_data'] = request.env['omniauth.auth'].except!(:extra)
         redirect_to new_user_registration_url
       end
+    end
+
+    protected
+
+    def find_or_create_user_from_omniauth
+      auth = OmniauthResponse.new(response: request.env['omniauth.auth'])
+      User.from_omniauth(auth)
     end
 
     # More info at:

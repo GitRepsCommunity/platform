@@ -1,0 +1,29 @@
+{
+    "provider": "github",
+    "uid": "12345678",
+    "info": {
+      "nickname": "exampleuser",
+      "email": "user@example.com",
+      "image": "https://avatars.githubusercontent.com/u/12345678?v=4"
+    },
+    "credentials": {
+      "token": "//encrypted//"
+    },
+    "extra": {
+      "raw_info": {
+        "login": "exampleuser",
+        "avatar_url": "https://avatars.githubusercontent.com/u/12345678?v=4",
+        "url": "https://api.github.com/users/exampleuser",
+        "html_url": "https://github.com/exampleuser"
+      },
+      "all_emails": [
+        {
+          "email": "12345678+exampleuser@example.com"
+        },
+        {
+          "email": "user@example.com"
+        }
+      ]
+    }
+  }
+  
