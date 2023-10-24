@@ -21,9 +21,10 @@ module Users
     # end
 
     # DELETE /resource/sign_out
-    # def destroy
-    #   super
-    # end
+    def destroy
+      super
+      redirect_to new_user_registration_url
+    end
 
     # protected
 
