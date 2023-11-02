@@ -80,7 +80,7 @@ gem 'github_api'
 
 gem 'tailwindcss-rails', '~> 2.0'
 
-gem 'simplecov', require: false, group: :test
+gem 'simplecov', require: true, group: :test
 
 gem 'omniauth-github', '~> 2.0.0'
 
