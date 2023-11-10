@@ -31,3 +31,8 @@
 
 en:
   hello: "Hello world"
+en:
+  notices:
+    profile_created: "Profile was successfully created."
+    profile_updated: "Profile was successfully updated."
+    profile_destroyed: "Profile was successfully destroyed."
