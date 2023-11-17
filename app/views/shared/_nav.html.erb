@@ -13,10 +13,14 @@
     <div class='w-24 px-4'>
         <%- if user_signed_in? %>
 <<<<<<< HEAD
+<<<<<<< HEAD
             <%= button_to "Sign out", destroy_user_session_path, method: :delete %>
 =======
             <%= button_to "Sign out", destroy_session_path("user"), method: :delete %>
 >>>>>>> 591286c (Added basic attributes to Profile model and foreign key reference to user id)
+=======
+            <%= button_to "Sign out", destroy_session_path(resource_name), method: :delete %>
+>>>>>>> bdf3688 (Removed hard-coded user from profiles controller)
         <%- elsif controller_name != 'sessions' %>
             <%= link_to "Log in", new_user_session_path %>
         <%- elsif devise_mapping.registerable? && controller_name != 'registrations' %>
