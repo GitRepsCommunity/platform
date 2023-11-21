@@ -33,6 +33,9 @@ jobs:
       - name: Create Test DB
         run: yarn run rails db:create
 
+      - name: Precompile
+        run: yarn run rails assets:precompile
+
       - name: Tests
         run: yarn run rails test
 
