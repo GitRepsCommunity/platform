@@ -6,7 +6,6 @@
         GitReps
     </div>
     <div class='w-24 px-4'>
-        <%# REPLACE resource_name with "user" since every time it was used for nav bar it was a Symbol for user %>
         <%- if user_signed_in? %>
             <%= button_to "Sign out", destroy_user_session_path, method: :delete %>
         <%- elsif controller_name != 'sessions' %>
