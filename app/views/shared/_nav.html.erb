@@ -5,22 +5,19 @@
     <div class='flex justify-center w-96 text-2xl'>
         GitReps
     </div>
-<<<<<<< HEAD
     <div class='flex justify-center'>
         <%- if user_signed_in? %>
             <div class='w-48 px-4'>
                 <%= link_to "GitHub Explorer", github_explorer_api_requests_path %>
             </div>
-=======
     <div class='w-24 px-4'>
         <%# REPLACE resource_name with "user" since every time it was used for nav bar it was a Symbol for user %>
         <%- if user_signed_in? %>
-            <%= button_to "Sign out", destroy_session_path("user"), method: :delete %>
+            <%= button_to "Sign out", destroy_user_session_path, method: :delete %>
         <%- elsif controller_name != 'sessions' %>
-            <%= link_to "Log in", new_session_path("user") %>
+            <%= link_to "Log in", new_user_session_path %>
         <%- elsif devise_mapping.registerable? && controller_name != 'registrations' %>
             <%= link_to "Sign up", new_registration_path("user") %><br />
->>>>>>> 1fe682c (Set up basic /profiles navigation and controller logic)
         <% end %>
         <div class='w-24 px-4'>
             <%= link_to "Profiles", profiles_path %>

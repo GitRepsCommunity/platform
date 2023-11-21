@@ -5,7 +5,6 @@ class ProfilesController < ApplicationController
 
   # GET /profiles or /profiles.json
   def index
-    @show_shared_nav = false
     @profiles = Profile.all
   end
 
