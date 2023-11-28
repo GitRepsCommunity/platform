@@ -6,7 +6,6 @@ module Users
 
     def github
       @user = find_or_create_user_from_omniauth
-
       if @user.persisted?
         sign_in_and_redirect @user, event: :authentication
         set_flash_message(:notice, :success, kind: 'Github') if is_navigational_format?
