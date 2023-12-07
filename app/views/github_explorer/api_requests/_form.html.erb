@@ -1,0 +1,30 @@
+<%= form_with(model: github_explorer_api_request, class: "p-2") do |form| %>
+  <% if github_explorer_api_request.errors.any? %>
+    <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
+      <h2><%= pluralize(github_explorer_api_request.errors.count, "error") %> prohibited this github_explorer_api_request from being saved:</h2>
+
+      <ul>
+        <% github_explorer_api_request.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="mt-6">
+    <%= form.label :resource %>
+    <%= form.select :resource, options_for_select(@resource_options, @github_explorer_api_request.resource) %>
+  </div>
+
+  <div class="mt-6">
+    <%= form.label :url %>
+    <%= form.text_field :url, class: "shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+    <small>
+      Url is only needed when selecting the "Url" resource.
+    </small>
+  </div>
+
+  <div class="inline">
+    <%= form.submit class: "rounded-lg mt-2 py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>
+  </div>
+<% end %>
