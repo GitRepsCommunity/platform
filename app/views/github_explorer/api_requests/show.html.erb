@@ -7,22 +7,5 @@
     <%= link_to 'New api request', new_github_explorer_api_request_path, class: "rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium" %>
   </div>
 
-  <div>
-    <div class="mt-6">
-      <strong class="font-medium mb-1">Resource:</strong>
-      <%= @github_explorer_api_request.resource %>
-    </div>
-
-    <div>
-      <strong class="font-medium mb-1">Url:</strong>
-      <%= @github_explorer_api_request.url %>
-    </div>
-
-    <div>
-      <strong class="font-medium mb-1">Response:</strong>
-      <pre class="bg-gray-600 p-5">
-        <%= render_api_response(@github_explorer_api_request.response) %>
-      </pre>
-    </div>
-  </div>
+  <%= tag_show_item(@github_explorer_api_request) %>
 </div>

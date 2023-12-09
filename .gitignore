@@ -41,3 +41,6 @@
 
 # Ignore test coverage related information.
 /coverage
+
+# Ignore personal notes
+notes
