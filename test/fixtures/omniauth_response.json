@@ -18,9 +18,6 @@
       },
       "all_emails": [
         {
-          "email": "12345678+exampleuser@example.com"
-        },
-        {
           "email": "user@example.com"
         }
       ]

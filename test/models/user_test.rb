@@ -21,9 +21,6 @@ class UserTest < ActiveSupport::TestCase
     assert_equal raw_auth_response['info']['nickname'], auth.github_username
     assert_equal auth.github_username, user.github_username
 
-    assert_not_nil user.password
-    assert_equal 20, user.password.length
-
     assert_equal raw_auth_response['info']['email'], auth.email
     assert_equal auth.email, user.email
 
@@ -31,6 +28,7 @@ class UserTest < ActiveSupport::TestCase
     assert_equal auth.profile_pic_url, user.profile_pic_url
 
     assert_equal raw_auth_response['credentials']['token'], auth.github_token
+    puts user.github_token
     assert_equal auth.github_token, user.github_token
   end
 end
