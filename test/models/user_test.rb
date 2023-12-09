@@ -28,7 +28,6 @@ class UserTest < ActiveSupport::TestCase
     assert_equal auth.profile_pic_url, user.profile_pic_url
 
     assert_equal raw_auth_response['credentials']['token'], auth.github_token
-    puts user.github_token
     assert_equal auth.github_token, user.github_token
   end
 end

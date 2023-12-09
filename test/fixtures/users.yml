@@ -12,7 +12,7 @@ one:
   provider: "github"
   uid: "12345678"
   github_username: "exampleuser"
-  github_token: "[FILTERED]"
+  github_token: "//encrypted//"
   profile_pic_url: "https://avatars.githubusercontent.com/u/12345678?v=4"
 
 # column: value

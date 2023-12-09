@@ -3,8 +3,12 @@
 require 'application_system_test_case'
 
 class ProfilesTest < ApplicationSystemTestCase
+  include Devise::Test::IntegrationHelpers
+
   setup do
     @profile = profiles(:one)
+    @user = users(:one)
+    sign_in @user
   end
 
   test 'visiting the index' do
