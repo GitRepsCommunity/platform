@@ -10,10 +10,7 @@ Rails.application.routes.draw do
     omniauth_callbacks: 'users/omniauth_callbacks'
   }
 
-<<<<<<< HEAD
   root 'profiles#index'
-=======
   # TODO: Add HomeController for root index:
   # root "home#index"
->>>>>>> 1fe682c (Set up basic /profiles navigation and controller logic)
 end

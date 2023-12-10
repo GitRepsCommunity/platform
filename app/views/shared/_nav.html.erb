@@ -10,13 +10,6 @@
             <div class='w-48 px-4'>
                 <%= link_to "GitHub Explorer", github_explorer_api_requests_path %>
             </div>
-    <div class='w-24 px-4'>
-        <%- if user_signed_in? %>
-            <%= button_to "Sign out", destroy_user_session_path, method: :delete %>
-        <%- elsif controller_name != 'sessions' %>
-            <%= link_to "Log in", new_user_session_path %>
-        <%- elsif devise_mapping.registerable? && controller_name != 'registrations' %>
-            <%= link_to "Sign up", new_registration_path("user") %><br />
         <% end %>
         <div class='w-24 px-4'>
             <%= link_to "Profiles", profiles_path %>
