@@ -28,6 +28,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_06_002115) do
   create_table "profiles", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "description"
+    t.string "avatar_url"
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_profiles_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -48,4 +52,5 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_06_002115) do
   end
 
   add_foreign_key "github_explorer_api_requests", "users"
+  add_foreign_key "profiles", "users"
 end

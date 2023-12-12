@@ -67,6 +67,10 @@ class ProfilesController < ApplicationController
   # Only allow a list of trusted parameters through.
   def profile_params
     params.fetch(:profile, {})
-    # params.require(:profile).permit(:description, :avatar_url, :other_attribute)
+    {
+      description: 'empty bio',
+      avatar_url: current_user.profile_pic_url,
+      user_id: current_user.id
+    }
   end
 end
