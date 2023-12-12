@@ -11,6 +11,4 @@ Rails.application.routes.draw do
   }
 
   root 'profiles#index'
-  # TODO: Add HomeController for root index:
-  # root "home#index"
 end
