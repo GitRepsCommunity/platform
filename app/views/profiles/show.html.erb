@@ -10,10 +10,12 @@
     <%= @profile.description%>
     <%= render @profile %>
 
-    <%= link_to 'Edit this profile', edit_profile_path(@profile), class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-    <div class="inline-block ml-2">
-      <%= button_to 'Destroy this profile', profile_path(@profile), method: :delete, class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 font-medium" %>
-    </div>
+    <% if user_signed_in? && current_user.id == @profile.user_id %>
+      <%= link_to 'Edit this profile', edit_profile_path(@profile), class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+      <div class="inline-block ml-2">
+        <%= button_to 'Destroy this profile', profile_path(@profile), method: :delete, class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 font-medium" %>
+      </div>
+    <% end %>
     <%= link_to 'Back to profiles', profiles_path, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
   </div>
 </div>
