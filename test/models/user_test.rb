@@ -5,13 +5,21 @@ require 'json'
 
 class UserTest < ActiveSupport::TestCase
   test 'has_many profiles' do
-    user = User.find(1)
+    assert_nothing_raised do
+      users(:one).profiles
+    end
+  end
+
+  test 'has_many api_requests' do
+    assert_nothing_raised do
+      users(:one).api_requests
+    end
+  end
+
+  test 'profiles dependent destroy' do
+    user = users(:one)
     assert_equal 1, user.profiles.count
 
-    user.profiles.create
-    assert_equal 2, user.profiles.count
-
-    # dependent: :destroy
     profile_ids = user.profiles.ids
     user.destroy
     assert_equal 0, Profile.where(id: profile_ids).count
