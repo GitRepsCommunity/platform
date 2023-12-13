@@ -63,6 +63,9 @@ Rails.application.configure do
   # Highlight code that triggered database queries in logs.
   config.active_record.verbose_query_logs = true
 
+  # Allow tailwind css to update.
+  config.assets.debug = true
+
   # Suppress logger output for asset requests.
   config.assets.quiet = true
 
