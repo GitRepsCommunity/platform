@@ -3,7 +3,9 @@
 require 'test_helper'
 
 class ProfileTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  test 'belongs_to user' do
+    assert_nothing_raised do
+      profiles(:one).user
+    end
+  end
 end

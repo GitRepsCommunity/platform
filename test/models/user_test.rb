@@ -4,6 +4,27 @@ require 'test_helper'
 require 'json'
 
 class UserTest < ActiveSupport::TestCase
+  test 'has_many profiles' do
+    assert_nothing_raised do
+      users(:one).profiles
+    end
+  end
+
+  test 'has_many api_requests' do
+    assert_nothing_raised do
+      users(:one).api_requests
+    end
+  end
+
+  test 'profiles dependent destroy' do
+    user = users(:one)
+    assert_equal 1, user.profiles.count
+
+    profile_ids = user.profiles.ids
+    user.destroy
+    assert_equal 0, Profile.where(id: profile_ids).count
+  end
+
   test 'from_omniauth' do
     raw_auth_response = JSON.parse(File.read('test/fixtures/omniauth_response.json'))
 
