@@ -2,92 +2,75 @@
 
 module GithubExplorer
   module JsonHelper
-    # ============================
-    # Helpers
-    # ============================
-    def array?(obj)
-      obj.is_a?(Array) && obj.length > 2
-    end
+    def tag_json(response)
+      return tag_json_array(response) if response.is_a? Array
 
-    def obj?(obj)
-      obj.is_a?(Array) && obj.length == 2
-    end
-
-    def rel?(key, val)
-      key.end_with?('url') && val&.include?('api.github.com')
-    end
-
-    def depth(arr)
-      return 0 unless arr.is_a?(Array)
-
-      1 + depth(arr[0])
-    end
-
-    # ============================
-    # Rendering
-    # ============================
-    def render_api_response(response)
-      if depth(response) > 2
-        render_json_array(response, -1)
-      else
-        render_json_object(response, -1)
+      tag.pre class: 'bg-gray-900 p-5 text-rose-400' do
+        concat tag_obj obj: response, indent: 0
       end
     end
 
-    def render_json_object(obj, depth)
-      if obj?(obj)
-        obj_content(obj, depth)
-      elsif array?(obj)
-        render_json_array(obj, depth + 1)
-      end
-    end
-
-    def render_json_array(arr, depth)
-      content_tag(:div) do
-        arr.each do |obj|
-          concat render_json_object(obj, depth)
+    def tag_json_array(response)
+      tag.pre class: 'bg-gray-900 p-5 text-rose-400' do
+        response.each do |resp|
+          concat tag_obj obj: resp, indent: 0
+          concat tag.hr class: 'my-6'
         end
       end
     end
 
-    # ============================
-    # Content tags
-    # ============================
-    def obj_content(obj, depth)
-      key = obj[0]
-      val = obj[1]
-      content_tag(:div) do
-        concat "#{key}: ".indent(depth * 4)
-        concat val_content(val, depth)
-
-        rel?(key, val) && (concat rel_link(key, val))
+    def tag_obj(obj:, indent:)
+      tag.div do
+        obj.each { |key, val| concat tag_attr(key, val, indent) }
       end
     end
 
-    def val_content(val, depth)
-      if array?(val)
-        render_json_array(val, depth + 1)
-      else
-        val
+    def tag_attr(key, val, indent)
+      tag.div do
+        concat "#{key}:".indent(indent * 4)
+        if val.is_a? Hash
+          concat tag_obj(obj: val, indent: indent + 1)
+        else
+          concat tag_syntax_highlighting(val)
+        end
+        concat rel_link(key, val)
       end
     end
 
     def rel_link(key, val)
-      rel = rel_parts(key, val)
-      return unless rel[:params].length <= 1
+      return unless key.is_a?(String) && key.end_with?('url') && val&.include?('api.github.com')
 
-      link_to "GET #{rel[:name]}",
-              new_github_explorer_api_request_path(url: rel[:url]),
-              class: 'ml-2 rounded-md bg-gray-100 text-blue-600'
+      link_to "GET #{key}",
+              new_github_explorer_api_request_path(url: val),
+              class: 'px-1 ml-2 rounded-md text-blue-600 hover:underline'
     end
 
-    def rel_parts(key, val)
-      parts = val.split('{/')
-      {
-        name: key.gsub('_url', ''),
-        url: parts[0],
-        params: parts[1..].map { |p| p.gsub('}', '') }
-      }
+    def tag_syntax_highlighting(val)
+      tag_integer(val) ||
+        tag_boolean(val) ||
+        tag_datetime(val) ||
+        (tag.span val, class: 'ml-1 text-green-400')
+    end
+
+    def tag_integer(val)
+      return unless val.is_a? Integer
+
+      tag.span val, class: 'ml-1 text-blue-400'
+    end
+
+    def tag_boolean(val)
+      return unless [true, false].include? val
+
+      tag.span val, class: 'ml-1 text-orange-400'
+    end
+
+    def tag_datetime(val)
+      begin
+        val.to_datetime
+      rescue Date::Error, NoMethodError
+        return
+      end
+      tag.span val, class: 'ml-1 text-yellow-400'
     end
   end
 end

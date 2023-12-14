@@ -6,7 +6,12 @@ module GithubExplorer
     enum :resource, { user: 0, repositories: 1, organizations: 2, url: 3 }
 
     def send_request_and_save!
-      self.response = send_request
+      response = send_request
+      self.response = if response.is_a? Array
+                        response.map & :to_h
+                      else
+                        response.to_h
+                      end
       save!
     end
 
