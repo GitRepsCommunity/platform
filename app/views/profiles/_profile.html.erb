@@ -1,7 +1,6 @@
 <div id="<%= dom_id profile %>">
   <% if action_name != "show" %>
-    <%=  User.find_by(id: profile.user_id).github_username %>
-    <%= link_to "Show this profile", profile, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+    <%= link_to User.find_by(id: profile.user_id).github_username, profile, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
     <% if user_signed_in? && current_user.id == profile.user_id %>
       <%= link_to 'Edit this profile', edit_profile_path(profile), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
     <% end %>

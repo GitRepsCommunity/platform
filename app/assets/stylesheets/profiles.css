@@ -1,0 +1,85 @@
+/* PROFILE SHOW */
+/* Profile Header Container */
+/* Defines the styling for the header section of the profile */
+div.profile-header-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 15%; /* Adjust the space between elements */
+    padding-bottom: 10px;
+  }
+  
+  /* Image Styling */
+  /* Defines styling for images within the profile header */
+  img {
+    width: 100px;
+    height: 100px;
+    border-radius: 5%; /* Adds a slight border-radius to the image */
+  }
+  
+  /* Profile Body Container */
+  /* Defines the layout for the body section of the profile */
+  .profile-body-container {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  /* Profile Description Container */
+  /* Defines the styling for the profile description */
+  .profile-description-container {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-size: large;
+    border: 1px solid #ccc; /* Border properties */
+    border-color: black; /* Border color */
+    border-radius: 5px; /* Border radius */
+    padding: 10px; /* Padding within the container */
+  }
+  
+  /* Profile Stats Summary */
+  /* Defines the styling for the summary of profile statistics */
+  .profile-stats-summary {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding-bottom: 10px;
+    gap: 5px; /* Adjust the space between elements */
+    justify-content: space-evenly;
+  }
+    
+  /* Profile Summary Item */
+  /* Defines the styling for individual summary items in the profile */
+  .profile-summary-item {
+    text-align: center;
+    padding: 10px;
+    border: 1px solid #ccc; 
+    border-radius: 5px; 
+    width: 30%; /* Adjust the width of each summary item */
+  }
+  
+  /* Stat */
+  /* Styles for the 'stat' within profile summary items */
+  .stat {
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  
+  /* Result */
+  /* Styles for the 'result' within profile summary items */
+  .result {
+    flex-grow: 1;
+    font-weight: bolder;
+    color: blue; /* Font color */
+  }
+  
+  /* Profile Options Container */
+  /* Defines the styling for the options section in the profile */
+  .profile-options-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding-bottom: 10px; 
+    justify-content: space-evenly;
+  }
+  
+/* PROFILE EDIT */

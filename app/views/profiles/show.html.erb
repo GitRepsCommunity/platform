@@ -1,21 +1,54 @@
+<%= stylesheet_link_tag 'profiles' %>
+
 <div class="mx-auto md:w-2/3 w-full flex">
   <div class="mx-auto">
     <% if notice.present? %>
       <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
     <% end %>
 
-    <p>current user account: </p>
-    <%= User.find_by(id: @profile.user_id).github_username %>
-    <%= image_tag(@profile.avatar_url) %>
-    <%= @profile.description%>
-    <%= render @profile %>
+    <div class="profile-header-container">
+      <%= image_tag(@profile.avatar_url) %>
+      <h1 style="font-size: 24px; font-weight: bold;">
+        <%= User.find_by(id: @profile.user_id).github_username %>
+      </h1>
+    </div>
 
+    <div class="profile-body-container">
+      <div class="profile-stats-summary">
+        <div class="profile-summary-item">
+          <div class="stat">Total Issues Resolved</div>
+          <div class="result">RESULT</div>
+        </div>
+        <div class="profile-summary-item">
+          <div class="stat">Avgerage Commit Size</div>
+          <div class="result">RESULT</div>
+        </div>
+        <div class="profile-summary-item">
+          <div class="stat">External Contributions</div>
+          <div class="result">RESULT</div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="profile-description-container">
+      <%= @profile.description%>
+    </div>
+    
+    <%# <%= render @profile %>
+
+    <div class="profile-options-container">
     <% if user_signed_in? && current_user.id == @profile.user_id %>
-      <%= link_to 'Edit this profile', edit_profile_path(@profile), class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
       <div class="inline-block ml-2">
-        <%= button_to 'Destroy this profile', profile_path(@profile), method: :delete, class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 font-medium" %>
+        <%= link_to 'Edit profile', edit_profile_path(@profile), class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+      </div>
+      <div class="inline-block ml-2">
+        <%= button_to 'Delete profile', profile_path(@profile), method: :delete, class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 font-medium" %>
       </div>
     <% end %>
-    <%= link_to 'Back to profiles', profiles_path, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+    <div class="inline-block ml-2">
+      <%= link_to 'Back to profiles', profiles_path, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+    </div>
+    </div>
+    
   </div>
 </div>
