@@ -28,7 +28,7 @@ class ProfilesTest < ApplicationSystemTestCase
 
   test 'should update Profile' do
     visit profile_url(@profile)
-    click_on 'Edit this profile', match: :first
+    click_on 'Edit profile', match: :first
 
     click_on 'Update Profile'
 
@@ -38,7 +38,7 @@ class ProfilesTest < ApplicationSystemTestCase
 
   test 'should destroy Profile' do
     visit profile_url(@profile)
-    click_on 'Destroy this profile', match: :first
+    click_on 'Delete profile', match: :first
 
     assert_text 'Profile was successfully destroyed'
   end
