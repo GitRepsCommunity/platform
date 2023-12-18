@@ -14,7 +14,7 @@ module GithubExplorer
     def tag_show_item(api_request)
       tag.div class: 'mt-6' do
         concat tag_list_item_attrs(api_request)
-        concat tag.pre render_api_response(api_request.response), class: 'bg-gray-600 p-5'
+        concat tag_json(api_request.response)
       end
     end
 
