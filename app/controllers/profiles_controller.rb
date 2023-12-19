@@ -21,7 +21,7 @@ class ProfilesController < ApplicationController
 
   # POST /profiles or /profiles.json
   def create
-    @profile = Profile.new(profile_params)
+    @profile = Profile.new(profile_params.merge(user: current_user, avatar_url: current_user.profile_pic_url))
 
     respond_to do |format|
       if @profile.save
@@ -67,11 +67,5 @@ class ProfilesController < ApplicationController
   # Only allow a list of trusted parameters through.
   def profile_params
     params.require(:profile).permit(:description, :avatar_url)
-    params.fetch(:profile, {})
-    {
-      description: 'empty bio',
-      avatar_url: current_user.profile_pic_url,
-      user_id: current_user.id
-    }
   end
 end

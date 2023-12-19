@@ -6,49 +6,51 @@
       <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
     <% end %>
 
-    <div class="profile-header-container">
-      <%= image_tag(@profile.avatar_url) %>
-      <h1 style="font-size: 24px; font-weight: bold;">
-        <%= User.find_by(id: @profile.user_id).github_username %>
+    <div class="flex flex-row items-center gap-15" style="padding-bottom: 10px;">
+      <%= image_tag(@profile.avatar_url, class: "w-100 h-100 rounded-full") %>
+      <h1 class="text-2xl font-bold">
+        <%= @profile.user.github_username %>
       </h1>
     </div>
 
-    <div class="profile-body-container">
-      <div class="profile-stats-summary">
-        <div class="profile-summary-item">
-          <div class="stat">Total Issues Resolved</div>
-          <div class="result">RESULT</div>
-        </div>
-        <div class="profile-summary-item">
-          <div class="stat">Avgerage Commit Size</div>
-          <div class="result">RESULT</div>
-        </div>
-        <div class="profile-summary-item">
-          <div class="stat">External Contributions</div>
-          <div class="result">RESULT</div>
-        </div>
+    <div class="flex justify-between">
+      <div class="py-3 border rounded-lg border-black px-10" style="font-size: large;">
+        <%= @profile.description %>
       </div>
     </div>
-    
-    <div class="profile-description-container">
-      <%= @profile.description%>
-    </div>
-    
-    <%# <%= render @profile %>
 
-    <div class="profile-options-container">
-    <% if user_signed_in? && current_user.id == @profile.user_id %>
-      <div class="inline-block ml-2">
-        <%= link_to 'Edit profile', edit_profile_path(@profile), class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-      </div>
-      <div class="inline-block ml-2">
-        <%= button_to 'Delete profile', profile_path(@profile), method: :delete, class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 font-medium" %>
-      </div>
-    <% end %>
-    <div class="inline-block ml-2">
-      <%= link_to 'Back to profiles', profiles_path, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+    <div class="flex flex-row items-center gap-4 pb-2.5">
+      <%= @profile.description %>
     </div>
+
+    <div class="flex flex-row justify-evenly">
+      <div class="w-1/3 text-center border rounded-lg border-black py-3">
+        <div class="font-bold">Total Issues Resolved</div>
+        <div class="font-bold">RESULT</div>
+      </div>
+      <div class="w-1/3 text-center border rounded-lg border-black py-3">
+        <div class="font-bold">Average Commit Size</div>
+        <div class="font-bold">RESULT</div>
+      </div>
+      <div class="w-1/3 text-center border rounded-lg border-black py-3">
+        <div class="font-bold">External Contributions</div>
+        <div class="font-bold">RESULT</div>
+      </div>
     </div>
-    
+
+    <div class="flex flex-row items-center justify-evenly pb-10">
+      <% if user_signed_in? && current_user.id == @profile.user_id %>
+        <div class="inline-block">
+          <%= link_to 'Edit profile', edit_profile_path(@profile), class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+        </div>
+        <div class="inline-block">
+          <%= button_to 'Delete profile', profile_path(@profile), method: :delete, class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 font-medium" %>
+        </div>
+      <% end %>
+      <div class="inline-block">
+        <%= link_to 'Back to profiles', profiles_path, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+      </div>
+    </div>
+
   </div>
 </div>
