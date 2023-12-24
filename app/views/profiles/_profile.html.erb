@@ -1,9 +1,11 @@
 <div id="<%= dom_id profile %>">
   <% if action_name != "show" %>
-    <%= link_to profile.user.github_username, profile, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-    <% if user_signed_in? && current_user.id == profile.user_id %>
-      <%= link_to 'Edit this profile', edit_profile_path(profile), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
-    <% end %>
+    <div class="flex items-center gap-4 pt-4">
+      <img src="<%= profile.avatar_url %>" width=70px height=70px class="rounded-full border-4 border-white">
+      <h1 class="text-xl font-bold">
+        <%= link_to profile.user.github_username, profile, class: "rounded-lg py-2 px-5 inline-block font-medium pt-2" %>
+      </h1>
+    </div>
     <hr class="mt-6">
   <% end %>
 </div>
