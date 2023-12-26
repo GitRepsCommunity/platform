@@ -5,20 +5,26 @@
       <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
     <% end %>
 
-    <div class="relative h-3/5 bg-gradient-to-r from-purple-500 to-pink-500 rounded-t-sm">
-      <img onclick="showFullImage('<%= @profile.avatar_url %>')" src="<%= @profile.avatar_url %>" width=150px height=150px class="absolute bottom-0 left-32 translate-y-1/2 rounded-full border-4 border-white">
-    </div>
+    <div class="relative flex flex-col h-full mx-auto">
+      <div class="relative h-1/2 bg-gradient-to-r from-purple-500 to-pink-500 rounded-t-sm">
+        <img src="<%= @profile.avatar_url %>" width=150px height=150px class="absolute bottom-0 left-32 translate-y-1/2 rounded-full border-4 border-white z-40">
+      </div>
 
-    <div class="flex justify-center items-center h-2/5 bg-gray-100 rounded-b-sm">
-      <h1 class="text-2xl font-bold">
-        <%= @profile.user.github_username %>
-      </h1>
-      <%= @profile.description %>
+      <div class="flex justify-center items-center bg-gray-100 rounded-b-sm relative" style="min-height: 20vh; max-height: max-content; overflow-y: auto;" >
+        <div class="absolute top-8 right-44 grid grid-cols-1">
+          <h1 class="text-2xl font-bold">
+            <%= @profile.user.github_username %>
+          </h1>
+          <h4 class="">
+            Job title goes here
+          </h4>
+        </div>
+        <div class="pt-10">
+          <%= @profile.description %>
+        </div>
+      </div>
     </div>
-
-    <div class="flex flex-row items-center gap-4 pb-2.5">
-      
-    </div>
+    
 
     <div class="grid grid-cols-1 sm:grid-cols-3 gap-x-2 gap-y-3 grid-flow-row-dense">
       <div class="bg-red-500 rounded-lg shadow-xl min-h-[50px] col-span-2"></div>
@@ -29,7 +35,7 @@
       <div class="bg-green-500 rounded-lg shadow-xl min-h-[50px] row-span-2"></div>
     </div>
 
-    <div class="grid grid-cols-1 sm:grid-cols-3 gap-x-2 gap-y-3">
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-x-1 w-1/2 mx-auto pt-5">
       <% if user_signed_in? && current_user.id == @profile.user_id %>
         <div>
           <%= link_to 'Edit profile', edit_profile_path(@profile), class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>

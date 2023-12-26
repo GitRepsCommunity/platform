@@ -20,7 +20,7 @@ class ProfilesTest < ApplicationSystemTestCase
     visit profiles_url
     click_on 'New profile'
 
-    click_on 'Create Profile'
+    click_on 'Save'
 
     assert_text 'Profile was successfully created'
     click_on 'Back'
@@ -30,7 +30,7 @@ class ProfilesTest < ApplicationSystemTestCase
     visit profile_url(@profile)
     click_on 'Edit profile', match: :first
 
-    click_on 'Update Profile'
+    click_on 'Save'
 
     assert_text 'Profile was successfully updated'
     click_on 'Back'
