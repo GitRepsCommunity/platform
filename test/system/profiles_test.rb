@@ -13,7 +13,7 @@ class ProfilesTest < ApplicationSystemTestCase
 
   test 'visiting the index' do
     visit profiles_url
-    assert_selector 'h1', text: 'Profiles'
+    assert_selector 'a', text: 'Profiles'
   end
 
   test 'should create profile' do
