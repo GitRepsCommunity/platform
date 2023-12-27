@@ -5,13 +5,13 @@
       <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
     <% end %>
 
-    <div class="relative flex flex-col h-full mx-auto">
-      <div class="relative h-1/2 bg-gradient-to-r from-purple-500 to-pink-500 rounded-t-sm">
+    <div class="flex flex-col">
+      <div class="relative h-56 bg-gradient-to-r from-purple-500 to-pink-500 rounded-t-sm">
         <img src="<%= @profile.avatar_url %>" width=150px height=150px class="absolute bottom-0 left-32 translate-y-1/2 rounded-full border-4 border-white z-40">
       </div>
 
-      <div class="flex justify-center items-center bg-gray-100 rounded-b-sm relative" style="min-height: 20vh; max-height: max-content; overflow-y: auto;" >
-        <div class="absolute top-8 right-44 grid grid-cols-1">
+      <div class="flex flex-col bg-gray-100 rounded-b-sm min-h-48 p-5">
+        <div class="w-full h-full flex flex-col items-end">
           <h1 class="text-2xl font-bold">
             <%= @profile.user.github_username %>
           </h1>
@@ -19,12 +19,11 @@
             Job title goes here
           </h4>
         </div>
-        <div class="pt-10">
+        <div class="w-full h-full mt-6">
           <%= @profile.description %>
         </div>
       </div>
     </div>
-    
 
     <div class="grid grid-cols-1 sm:grid-cols-3 gap-x-2 gap-y-3 grid-flow-row-dense">
       <div class="bg-red-500 rounded-lg shadow-xl min-h-[50px] col-span-2"></div>
