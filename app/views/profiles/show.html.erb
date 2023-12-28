@@ -34,18 +34,6 @@
       <div class="bg-green-500 rounded-lg shadow-xl min-h-[50px] row-span-2"></div>
     </div>
 
-    <div class="grid grid-cols-1 sm:grid-cols-3 gap-x-1 w-1/2 mx-auto pt-5">
-      <% if user_signed_in? && current_user.id == @profile.user_id %>
-        <div>
-          <%= link_to 'Edit profile', edit_profile_path(@profile), class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-        </div>
-        <div>
-          <%= button_to 'Delete profile', profile_path(@profile), method: :delete, class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-        </div>
-      <% end %>
-      <div>
-        <%= link_to 'Back to profiles', profiles_path, class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-      </div>
-    </div>
+    <%= tag_show_profile_buttons(@profile) %>
   </div>
 </div>

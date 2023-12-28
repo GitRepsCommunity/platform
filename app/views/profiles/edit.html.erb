@@ -3,6 +3,6 @@
 
   <%= render "form", profile: @profile %>
 
-  <%= link_to "Show this profile", @profile, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-  <%= link_to "Back to profiles", profiles_path, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+  <%= index_profiles_button %>
+  <%= show_profile_button(@profile) %>
 </div>
