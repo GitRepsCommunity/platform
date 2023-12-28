@@ -21,17 +21,21 @@ class ProfilesController < ApplicationController
 
   # POST /profiles or /profiles.json
   def create
-    @profile = Profile.new(profile_params)
+    @profile = Profile.new(profile_params.merge(user: current_user, avatar_url: current_user.profile_pic_url))
 
     respond_to do |format|
       if @profile.save
         format.html { redirect_to profile_url(@profile), notice: I18n.t('notices.profile_created') }
         format.json { render :show, status: :created, location: @profile }
       else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @profile.errors, status: :unprocessable_entity }
+        handle_unsuccessful_save(format)
       end
     end
+  end
+
+  def handle_unsuccessful_save(format)
+    format.html { render :new, status: :unprocessable_entity }
+    format.json { render json: @profile.errors, status: :unprocessable_entity }
   end
 
   # PATCH/PUT /profiles/1 or /profiles/1.json
@@ -66,11 +70,6 @@ class ProfilesController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def profile_params
-    params.fetch(:profile, {})
-    {
-      description: 'empty bio',
-      avatar_url: current_user.profile_pic_url,
-      user_id: current_user.id
-    }
+    params.require(:profile).permit(:description, :avatar_url)
   end
 end

@@ -13,14 +13,14 @@ class ProfilesTest < ApplicationSystemTestCase
 
   test 'visiting the index' do
     visit profiles_url
-    assert_selector 'h1', text: 'Profiles'
+    assert_selector 'a', text: 'Profiles'
   end
 
   test 'should create profile' do
     visit profiles_url
     click_on 'New profile'
 
-    click_on 'Create Profile'
+    click_on 'Save'
 
     assert_text 'Profile was successfully created'
     click_on 'Back'
@@ -28,9 +28,9 @@ class ProfilesTest < ApplicationSystemTestCase
 
   test 'should update Profile' do
     visit profile_url(@profile)
-    click_on 'Edit this profile', match: :first
+    click_on 'Edit profile', match: :first
 
-    click_on 'Update Profile'
+    click_on 'Save'
 
     assert_text 'Profile was successfully updated'
     click_on 'Back'
@@ -38,7 +38,7 @@ class ProfilesTest < ApplicationSystemTestCase
 
   test 'should destroy Profile' do
     visit profile_url(@profile)
-    click_on 'Destroy this profile', match: :first
+    click_on 'Delete profile', match: :first
 
     assert_text 'Profile was successfully destroyed'
   end

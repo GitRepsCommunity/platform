@@ -1,15 +1,51 @@
+
 <div class="mx-auto md:w-2/3 w-full flex">
-  <div class="mx-auto">
+  <div class="container mx-auto md:mx-auto">
     <% if notice.present? %>
       <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
     <% end %>
 
-    <%= render @profile %>
+    <div class="flex flex-col">
+      <div class="relative h-56 bg-gradient-to-r from-purple-500 to-pink-500 rounded-t-sm">
+        <img src="<%= @profile.avatar_url %>" width=150px height=150px class="absolute bottom-0 left-32 translate-y-1/2 rounded-full border-4 border-white z-40">
+      </div>
 
-    <%= link_to 'Edit this profile', edit_profile_path(@profile), class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-    <div class="inline-block ml-2">
-      <%= button_to 'Destroy this profile', profile_path(@profile), method: :delete, class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 font-medium" %>
+      <div class="flex flex-col bg-gray-100 rounded-b-sm min-h-48 p-5">
+        <div class="w-full h-full flex flex-col items-end">
+          <h1 class="text-2xl font-bold">
+            <%= @profile.user.github_username %>
+          </h1>
+          <h4 class="">
+            Job title goes here
+          </h4>
+        </div>
+        <div class="w-full h-full mt-6">
+          <%= @profile.description %>
+        </div>
+      </div>
     </div>
-    <%= link_to 'Back to profiles', profiles_path, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-x-2 gap-y-3 grid-flow-row-dense">
+      <div class="bg-red-500 rounded-lg shadow-xl min-h-[50px] col-span-2"></div>
+      <div class="bg-blue-500 rounded-lg shadow-xl min-h-[50px] row-span-2"></div>
+      <div class="bg-green-500 rounded-lg shadow-xl min-h-[50px]"></div>
+      <div class="bg-red-500 rounded-lg shadow-xl min-h-[50px] row-span-2"></div>
+      <div class="bg-blue-500 rounded-lg shadow-xl min-h-[50px]"></div>
+      <div class="bg-green-500 rounded-lg shadow-xl min-h-[50px] row-span-2"></div>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-x-1 w-1/2 mx-auto pt-5">
+      <% if user_signed_in? && current_user.id == @profile.user_id %>
+        <div>
+          <%= link_to 'Edit profile', edit_profile_path(@profile), class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+        </div>
+        <div>
+          <%= button_to 'Delete profile', profile_path(@profile), method: :delete, class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+        </div>
+      <% end %>
+      <div>
+        <%= link_to 'Back to profiles', profiles_path, class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+      </div>
+    </div>
   </div>
 </div>
