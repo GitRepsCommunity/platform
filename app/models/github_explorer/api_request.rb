@@ -8,7 +8,7 @@ module GithubExplorer
     def send_request_and_save!
       response = send_request
       self.response = if response.is_a? Array
-                        response.map & :to_h
+                        response.map(&:to_h)
                       else
                         response.to_h
                       end
