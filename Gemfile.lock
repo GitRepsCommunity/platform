@@ -133,6 +133,9 @@ GEM
     importmap-rails (1.2.1)
       actionpack (>= 6.0.0)
       railties (>= 6.0.0)
+    inline_svg (1.9.0)
+      activesupport (>= 3.0)
+      nokogiri (>= 1.6)
     io-console (0.6.0)
     irb (1.7.4)
       reline (>= 0.3.6)
@@ -339,6 +342,7 @@ DEPENDENCIES
   devise (~> 4.9)
   dotenv-rails
   importmap-rails
+  inline_svg
   jbuilder
   octokit (~> 5.0)
   omniauth-github (~> 2.0.0)
