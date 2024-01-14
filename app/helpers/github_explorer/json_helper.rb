@@ -65,6 +65,10 @@ module GithubExplorer
     end
 
     def tag_datetime(val)
+      # Datetime parse string length limit is 128
+      # https://ruby-doc.org/stdlib-3.1.1/libdoc/date/rdoc/DateTime.html#method-c-parse
+      return unless val.is_a?(String) && val.present? && val.length <= 128
+
       begin
         val.to_datetime
       rescue Date::Error, NoMethodError
