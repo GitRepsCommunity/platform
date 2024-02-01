@@ -86,3 +86,5 @@ gem 'omniauth-github', '~> 2.0.0'
 gem 'omniauth-rails_csrf_protection'
 
 gem 'octokit', '~> 5.0'
+
+gem 'inline_svg'
